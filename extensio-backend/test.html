@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Extensio AI Test</title>
+</head>
+<body>
+
+<h2>Generate Extension</h2>
+
+<input id="prompt" type="text" placeholder="Enter your idea" size="50"/>
+<button onclick="generate()">Generate</button>
+
+<script>
+async function generate() {
+  const prompt = document.getElementById("prompt").value;
+
+  const response = await fetch("http://localhost:3000/generate", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({ prompt })
+  });
+
+  const blob = await response.blob();
+
+  const url = window.URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = "extension.zip";
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+}
+</script>
+
+</body>
+</html>
