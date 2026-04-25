@@ -1,17 +1,66 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
+
 <head>
-    <title>Extensio.ai</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Extensio.ai - No-Code Extension Factory</title>
+  <link rel="stylesheet" href="./styles.css" />
 </head>
+
 <body>
+  <div class="bg-glow bg-glow-1"></div>
+  <div class="bg-glow bg-glow-2"></div>
 
-    <div class="container">
+  <header class="topbar">
+    <div class="topbar-inner">
+      <div>
+        <p class="brand-badge">AI Developer Platform</p>
         <h1>Extensio.ai</h1>
-        <textarea id="prompt"
-            placeholder="Describe your Chrome extension..."></textarea>
-        <button onclick="generate()">Generate</button>
+        <p class="hero-subtitle">Build Chrome Extensions from plain English prompts</p>
+      </div>
     </div>
+  </header>
 
-    <script src="index.js"></script>
+  <main class="container">
+    <section class="card">
+      <div class="section-head">
+        <h2>Authentication</h2>
+        <p>Sign in to create and manage projects</p>
+      </div>
+      <div class="auth-row">
+        <input id="email" placeholder="Email" />
+        <input id="password" type="password" placeholder="Password" />
+      </div>
+      <div class="auth-row">
+        <button id="registerBtn" class="btn-secondary">Register</button>
+        <button id="loginBtn" class="btn-primary">Login</button>
+        <span id="authStatus" class="status-pill"></span>
+      </div>
+    </section>
+
+    <section id="generateSection" class="card">
+      <div class="section-head">
+        <h2>Generate Extension</h2>
+        <p>Describe exactly what your extension should do</p>
+      </div>
+      <textarea id="prompt" rows="4" placeholder="Describe your extension idea..."></textarea>
+      <button id="generateBtn" class="btn-primary">Generate Project</button>
+    </section>
+
+    <section class="card">
+      <div class="section-head section-head-row">
+        <div>
+          <h2>Projects</h2>
+          <p>Track versions, iterate, and download builds</p>
+        </div>
+        <button id="refreshProjectsBtn" class="btn-secondary">Refresh</button>
+      </div>
+      <div id="projectsList"></div>
+    </section>
+  </main>
+
+  <script src="./app.js"></script>
 </body>
+
 </html>
