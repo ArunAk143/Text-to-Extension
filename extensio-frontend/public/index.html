@@ -1,43 +1,107 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#000000" />
-    <meta
-      name="description"
-      content="Web site created using create-react-app"
-    />
-    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
-    <!--
-      manifest.json provides metadata used when your web app is installed on a
-      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
-    -->
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-    <!--
-      Notice the use of %PUBLIC_URL% in the tags above.
-      It will be replaced with the URL of the `public` folder during the build.
-      Only files inside the `public` folder can be referenced from the HTML.
 
-      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
-      work correctly both with client-side routing and a non-root public URL.
-      Learn how to configure a non-root public URL by running `npm run build`.
-    -->
-    <title>React App</title>
-  </head>
-  <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root"></div>
-    <!--
-      This HTML file is a template.
-      If you open it directly in the browser, you will see an empty page.
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Extensio.ai - No-Code Extension Factory</title>
+  <link rel="stylesheet" href="./styles.css" />
+</head>
 
-      You can add webfonts, meta tags, or analytics to this file.
-      The build step will place the bundled scripts into the <body> tag.
+<body>
+  <div class="bg-glow bg-glow-1"></div>
+  <div class="bg-glow bg-glow-2"></div>
 
-      To begin the development, run `npm start` or `yarn start`.
-      To create a production bundle, use `npm run build` or `yarn build`.
-    -->
-  </body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <div>
+        <p class="brand-badge">AI Developer Platform</p>
+        <h1>Extensio.ai</h1>
+        <p class="hero-subtitle">Build Chrome Extensions from plain English prompts</p>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="card">
+      <div class="section-head">
+        <h2>Authentication</h2>
+        <p>Login with email and password to create and manage projects</p>
+      </div>
+      <div class="auth-row">
+        <input id="email" placeholder="Email" />
+        <input id="password" type="password" placeholder="Password" />
+      </div>
+      <div class="auth-row">
+        <button id="registerBtn" class="btn-secondary">Register</button>
+        <button id="loginBtn" class="btn-primary">Login</button>
+        <button id="logoutBtn" class="btn-secondary hidden">Logout</button>
+        <span id="authStatus" class="status-pill"></span>
+      </div>
+    </section>
+
+    <section id="generateSection" class="card hidden">
+      <div class="section-head">
+        <h2>Generate Extension</h2>
+        <p>Describe exactly what your extension should do</p>
+      </div>
+      <textarea id="prompt" rows="4" placeholder="Describe your extension idea..."></textarea>
+      <label class="checkbox premium-choice">
+        <input id="premiumPlanCheckbox" type="checkbox" />
+        <span>Subscribe to Premium (required for paid project generation)</span>
+      </label>
+      <button id="generateBtn" class="btn-primary">Generate Project</button>
+    </section>
+
+    <section class="card">
+      <div class="section-head section-head-row">
+        <div>
+          <h2>Projects</h2>
+          <p>Track versions, iterate, and download builds</p>
+        </div>
+        <button id="listProjectsBtn" class="btn-secondary">Lists</button>
+      </div>
+      <div id="projectsList"></div>
+    </section>
+  </main>
+
+  <div id="registerModal" class="modal-overlay hidden" role="dialog" aria-modal="true" aria-labelledby="registerTitle">
+    <div class="modal-card">
+      <div class="section-head section-head-row modal-head">
+        <h2 id="registerTitle">Create Account</h2>
+        <button id="closeRegisterModalBtn" class="btn-secondary modal-close-btn" type="button">Close</button>
+      </div>
+      <p class="modal-subtitle">Fill all required details to register.</p>
+
+      <div class="modal-grid">
+        <input id="registerFirstName" placeholder="First Name *" />
+        <input id="registerLastName" placeholder="Last Name *" />
+      </div>
+      <div class="modal-grid">
+        <input id="registerEmail" type="email" placeholder="Email *" />
+        <input id="registerMobile" type="tel" placeholder="Mobile Number *" maxlength="10" inputmode="numeric"
+          pattern="[0-9]{10}" />
+      </div>
+      <input id="registerPassword" type="text" placeholder="Password *" />
+      <div class="captcha-row">
+        <input id="registerCaptchaInput" placeholder="Enter captcha answer *" />
+        <span id="registerCaptchaQuestion" class="captcha-chip"></span>
+        <button id="refreshCaptchaBtn" class="btn-secondary" type="button">Refresh</button>
+      </div>
+
+      <label class="checkbox">
+        <input id="registerTerms" type="checkbox" />
+        <span>I agree to terms and privacy policy *</span>
+      </label>
+
+      <div class="auth-row">
+        <button id="submitRegisterBtn" class="btn-primary" type="button">Submit Registration</button>
+        <span id="registerStatus" class="status-pill"></span>
+      </div>
+    </div>
+  </div>
+
+  <script src="./app.js"></script>
+</body>
+
 </html>
