@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Extensio.ai - Premium Payment</title>
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+
+<body>
+  <div class="bg-glow bg-glow-1"></div>
+  <div class="bg-glow bg-glow-2"></div>
+
+  <main class="container">
+    <section class="card payment-card razorpay-card">
+      <div class="section-head">
+        <h2>Razorpay Checkout</h2>
+        <p>Complete secure payment to activate Premium and continue generating projects.</p>
+      </div>
+
+      <div class="rzp-hero">
+        <div>
+          <p class="brand-badge">Secure by Razorpay</p>
+          <h3 class="rzp-plan-title">Premium Plan</h3>
+          <p class="empty-state">Unlock paid generation and advanced project flow.</p>
+        </div>
+        <div class="rzp-amount-box">
+          <span>Total Payable</span>
+          <strong id="totalAmount">INR --</strong>
+        </div>
+      </div>
+
+      <div class="rzp-features">
+        <span>Priority project processing</span>
+        <span>Premium generation access</span>
+        <span>Pro plan activation</span>
+      </div>
+
+      <p id="paymentStatus" class="status-pill status-neutral">Ready to start payment</p>
+
+      <div class="auth-row payment-actions">
+        <button id="payNowBtn" class="btn-primary pay-btn" type="button">Pay with Razorpay</button>
+        <a class="btn-secondary payment-link" href="./index.html">Back to Dashboard</a>
+      </div>
+    </section>
+  </main>
+  <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+  <script src="./payment.js"></script>
+</body>
+
+</html>
