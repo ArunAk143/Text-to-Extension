@@ -144,3 +144,4 @@ if (window.location.protocol === "file:") {
   setPaymentStatus("Use http://localhost:4000/payment.html for Razorpay checkout.", "error");
   payNowBtn.disabled = true;
 }
+// fixing payment method
