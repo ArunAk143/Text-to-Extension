@@ -28,3 +28,33 @@ app.post("/create-order", async (req, res) => {
 });
 
 app.listen(3000, () => console.log("Server running on port 3000"));
+
+
+
+const express = require("express");
+const crypto = require("crypto");
+const bodyParser = require("body-parser");
+
+const app = express();
+app.use(bodyParser.json());
+
+// Verify payment signature
+app.post("/verify-payment", (req, res) => {
+  const { razorpay_order_id, razorpay_payment_id, razorpay_signature } = req.body;
+
+  const key_secret = "rzp_test_your_key_secret"; // Replace with your Razorpay Secret
+
+  // Generate expected signature
+  const generated_signature = crypto
+    .createHmac("sha256", key_secret)
+    .update(razorpay_order_id + "|" + razorpay_payment_id)
+    .digest("hex");
+
+  if (generated_signature === razorpay_signature) {
+    res.send({ status: "success", message: "Payment verified successfully!" });
+  } else {
+    res.status(400).send({ status: "failure", message: "Payment verification failed!" });
+  }
+});
+
+app.listen(3000, () => console.log("Server running on port 3000"));
