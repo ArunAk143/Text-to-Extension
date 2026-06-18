@@ -4,102 +4,82 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Extensio.ai - No-Code Extension Factory</title>
+  <title>Extensio.ai - Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="./styles.css" />
 </head>
 
-<body>
-  <div class="bg-glow bg-glow-1"></div>
-  <div class="bg-glow bg-glow-2"></div>
+<body class="dashboard-page">
+  <div class="auth-bg auth-bg-1"></div>
+  <div class="auth-bg auth-bg-2"></div>
 
-  <header class="topbar">
-    <div class="topbar-inner">
-      <div>
-        <p class="brand-badge">AI Developer Platform</p>
+  <div class="dashboard-layout">
+    <aside class="sidebar">
+      <div class="sidebar-brand">
+        <p class="brand-badge brand-badge-glow">Factory OS</p>
         <h1>Extensio.ai</h1>
-        <p class="hero-subtitle">Build Chrome Extensions from plain English prompts</p>
       </div>
-    </div>
-  </header>
+      <nav class="sidebar-nav">
+        <a class="nav-link active" href="./index.html">Dashboard</a>
+        <a class="nav-link" href="#generateSection">New Extension</a>
+        <a class="nav-link" href="#projectsList">My Extensions</a>
+        <a class="nav-link" href="./payment.html">Billing</a>
+      </nav>
+      <div class="sidebar-tip card">
+        <strong>Prompt Library</strong>
+        <p>Use clear action verbs: block, replace, highlight, summarize.</p>
+      </div>
+    </aside>
 
-  <main class="container">
-    <section class="card">
-      <div class="section-head">
-        <h2>Authentication</h2>
-        <p>Login with email and password to create and manage projects</p>
-      </div>
-      <div class="auth-row">
-        <input id="email" placeholder="Email" />
-        <input id="password" type="password" placeholder="Password" />
-      </div>
-      <div class="auth-row">
-        <button id="registerBtn" class="btn-secondary">Register</button>
-        <button id="loginBtn" class="btn-primary">Login</button>
-        <button id="logoutBtn" class="btn-secondary hidden">Logout</button>
-        <span id="authStatus" class="status-pill"></span>
-      </div>
-    </section>
-
-    <section id="generateSection" class="card hidden">
-      <div class="section-head">
-        <h2>Generate Extension</h2>
-        <p>Describe exactly what your extension should do</p>
-      </div>
-      <textarea id="prompt" rows="4" placeholder="Describe your extension idea..."></textarea>
-      <label class="checkbox premium-choice">
-        <input id="premiumPlanCheckbox" type="checkbox" />
-        <span>Subscribe to Premium (required for paid project generation)</span>
-      </label>
-      <button id="generateBtn" class="btn-primary">Generate Project</button>
-    </section>
-
-    <section class="card">
-      <div class="section-head section-head-row">
-        <div>
-          <h2>Projects</h2>
-          <p>Track versions, iterate, and download builds</p>
+    <div class="dashboard-main">
+      <header class="dashboard-topbar">
+        <div class="search-shell">
+          <input type="search" placeholder="Search extensions, prompts, files..." />
+          <span class="search-hint">Ctrl K</span>
         </div>
-        <button id="listProjectsBtn" class="btn-secondary">Lists</button>
-      </div>
-      <div id="projectsList"></div>
-    </section>
-  </main>
+        <div class="topbar-actions">
+          <span id="planBadge" class="plan-pill">FREE</span>
+          <span id="userBadge" class="user-pill">U</span>
+          <button id="logoutBtn" class="btn-secondary" type="button">Logout</button>
+        </div>
+      </header>
 
-  <div id="registerModal" class="modal-overlay hidden" role="dialog" aria-modal="true" aria-labelledby="registerTitle">
-    <div class="modal-card">
-      <div class="section-head section-head-row modal-head">
-        <h2 id="registerTitle">Create Account</h2>
-        <button id="closeRegisterModalBtn" class="btn-secondary modal-close-btn" type="button">Close</button>
-      </div>
-      <p class="modal-subtitle">Fill all required details to register.</p>
+      <main class="dashboard-content">
+        <section class="hero-card card">
+          <h2>Manage every generated extension</h2>
+          <p>Open, edit, iterate, and download ZIP builds from one workspace.</p>
+        </section>
 
-      <div class="modal-grid">
-        <input id="registerFirstName" placeholder="First Name *" />
-        <input id="registerLastName" placeholder="Last Name *" />
-      </div>
-      <div class="modal-grid">
-        <input id="registerEmail" type="email" placeholder="Email *" />
-        <input id="registerMobile" type="tel" placeholder="Mobile Number *" maxlength="10" inputmode="numeric"
-          pattern="[0-9]{10}" />
-      </div>
-      <input id="registerPassword" type="text" placeholder="Password *" />
-      <div class="captcha-row">
-        <input id="registerCaptchaInput" placeholder="Enter captcha answer *" />
-        <span id="registerCaptchaQuestion" class="captcha-chip"></span>
-        <button id="refreshCaptchaBtn" class="btn-secondary" type="button">Refresh</button>
-      </div>
+        <section id="generateSection" class="card">
+          <div class="section-head">
+            <h2>Generate Extension</h2>
+            <p>Describe exactly what your extension should do</p>
+          </div>
+          <textarea id="prompt" rows="4" placeholder="Describe your extension idea..."></textarea>
+          <label class="checkbox premium-choice">
+            <input id="premiumPlanCheckbox" type="checkbox" />
+            <span>Use Plus / Pro Plus features for this generation</span>
+          </label>
+          <button id="generateBtn" class="btn-primary">Generate Project</button>
+        </section>
 
-      <label class="checkbox">
-        <input id="registerTerms" type="checkbox" />
-        <span>I agree to terms and privacy policy *</span>
-      </label>
-
-      <div class="auth-row">
-        <button id="submitRegisterBtn" class="btn-primary" type="button">Submit Registration</button>
-        <span id="registerStatus" class="status-pill"></span>
-      </div>
+        <section class="card">
+          <div class="section-head section-head-row">
+            <div>
+              <h2>My Extensions</h2>
+              <p>Track versions, iterate, and download builds</p>
+            </div>
+            <button id="listProjectsBtn" class="btn-secondary">Refresh List</button>
+          </div>
+          <div id="projectsList"></div>
+        </section>
+      </main>
     </div>
   </div>
+
+  <div id="toastPopup" class="toast-popup hidden"></div>
 
   <script src="./app.js"></script>
 </body>
