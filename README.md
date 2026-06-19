@@ -1,7 +1,7 @@
 # Text-to-extension
 Text to Extension is a project developed during a 2-month internship at Zaalima Development. It converts user-provided text prompts into functional browser extensions, simplifying extension creation and enabling users to turn ideas into working code quickly and efficiently.
 
-backend in index.js
+
 # 🚀 Text to Extension
 A full-stack project that converts text into a browser extension using AI.
 
