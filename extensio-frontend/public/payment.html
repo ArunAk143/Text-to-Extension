@@ -4,48 +4,128 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Extensio.ai - Premium Payment</title>
+  <title>Extensio.ai - Choose Your Plan</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="./styles.css" />
 </head>
 
-<body>
-  <div class="bg-glow bg-glow-1"></div>
-  <div class="bg-glow bg-glow-2"></div>
+<body class="payment-page">
+  <div class="auth-bg auth-bg-1"></div>
+  <div class="auth-bg auth-bg-2"></div>
 
-  <main class="container">
-    <section class="card payment-card razorpay-card">
-      <div class="section-head">
-        <h2>Razorpay Checkout</h2>
-        <p>Complete secure payment to activate Premium and continue generating projects.</p>
-      </div>
+  <header class="payment-topbar">
+    <a class="payment-brand" href="./index.html">
+      <span class="brand-badge brand-badge-glow">Extensio.ai</span>
+      <strong>Subscription Plans</strong>
+    </a>
+    <a class="btn-secondary payment-link" href="./index.html">Back to Dashboard</a>
+  </header>
 
-      <div class="rzp-hero">
-        <div>
-          <p class="brand-badge">Secure by Razorpay</p>
-          <h3 class="rzp-plan-title">Premium Plan</h3>
-          <p class="empty-state">Unlock paid generation and advanced project flow.</p>
+  <main class="payment-shell">
+    <section class="payment-hero">
+      <h1>Choose the plan that fits you</h1>
+      <p>Upgrade anytime. Cancel anytime. Secure payments powered by Extensio MockPay.</p>
+    </section>
+
+    <section class="plan-grid" id="planGrid">
+      <article class="plan-card" data-plan="free">
+        <div class="plan-card-top">
+          <span class="plan-badge plan-badge-muted">Normal</span>
+          <h2>Free</h2>
+          <p class="plan-price"><span>₹</span>0<span class="plan-period">/year</span></p>
         </div>
-        <div class="rzp-amount-box">
-          <span>Total Payable</span>
-          <strong id="totalAmount">INR --</strong>
+        <ul class="plan-features">
+          <li>3 extension drafts</li>
+          <li>Basic AI templates</li>
+          <li>Community support</li>
+          <li>Manual project listing</li>
+        </ul>
+        <button class="btn-secondary btn-block plan-select-btn" data-plan="free" type="button">Current Plan</button>
+      </article>
+
+      <article class="plan-card plan-card-featured" data-plan="plus">
+        <div class="plan-ribbon">Popular</div>
+        <div class="plan-card-top">
+          <span class="plan-badge plan-badge-plus">Plus</span>
+          <h2>Plus</h2>
+          <p class="plan-price"><span>₹</span><span id="plusPrice">299</span><span class="plan-period">/year</span></p>
         </div>
-      </div>
+        <ul class="plan-features">
+          <li>20 extensions per month</li>
+          <li>Priority generation queue</li>
+          <li>Version history & edits</li>
+          <li>Email support</li>
+        </ul>
+        <button class="btn-primary btn-block plan-select-btn" data-plan="plus" type="button">Subscribe to Plus</button>
+      </article>
 
-      <div class="rzp-features">
-        <span>Priority project processing</span>
-        <span>Premium generation access</span>
-        <span>Pro plan activation</span>
-      </div>
+      <article class="plan-card plan-card-pro" data-plan="pro">
+        <div class="plan-ribbon plan-ribbon-pro">Best Value</div>
+        <div class="plan-card-top">
+          <span class="plan-badge plan-badge-pro">Pro Plus</span>
+          <h2>Pro Plus</h2>
+          <p class="plan-price"><span>₹</span><span id="proPrice">499</span><span class="plan-period">/year</span></p>
+        </div>
+        <ul class="plan-features">
+          <li>Unlimited extensions</li>
+          <li>Advanced AI generation</li>
+          <li>Instant ZIP downloads</li>
+          <li>Priority support</li>
+          <li>Early access features</li>
+        </ul>
+        <button class="btn-primary btn-block plan-select-btn" data-plan="pro" type="button">Subscribe to Pro Plus</button>
+      </article>
+    </section>
 
-      <p id="paymentStatus" class="status-pill status-neutral">Ready to start payment</p>
+    <div style="text-align: center; margin: 10px 0;">
+      <p id="paymentStatus" class="status-pill status-neutral hidden"></p>
+    </div>
 
-      <div class="auth-row payment-actions">
-        <button id="payNowBtn" class="btn-primary pay-btn" type="button">Pay with Razorpay</button>
-        <a class="btn-secondary payment-link" href="./index.html">Back to Dashboard</a>
+    <section class="plan-compare card">
+      <h3>Compare plans</h3>
+      <div class="compare-table-wrap">
+        <table class="compare-table">
+          <thead>
+            <tr>
+              <th>Feature</th>
+              <th>Normal</th>
+              <th>Plus</th>
+              <th>Pro Plus</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Monthly extensions</td>
+              <td>3 drafts</td>
+              <td>20</td>
+              <td>Unlimited</td>
+            </tr>
+            <tr>
+              <td>Priority generation</td>
+              <td>—</td>
+              <td>✓</td>
+              <td>✓</td>
+            </tr>
+            <tr>
+              <td>Advanced AI models</td>
+              <td>—</td>
+              <td>—</td>
+              <td>✓</td>
+            </tr>
+            <tr>
+              <td>Support</td>
+              <td>Community</td>
+              <td>Email</td>
+              <td>Priority</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </section>
   </main>
-  <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
   <script src="./payment.js"></script>
 </body>
 
