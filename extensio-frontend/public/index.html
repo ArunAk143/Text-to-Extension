@@ -47,22 +47,13 @@
       </header>
 
       <main class="dashboard-content">
-        <section class="hero-card card">
-          <h2>Manage every generated extension</h2>
-          <p>Open, edit, iterate, and download ZIP builds from one workspace.</p>
-        </section>
-
-        <section id="generateSection" class="card">
-          <div class="section-head">
-            <h2>Generate Extension</h2>
-            <p>Describe exactly what your extension should do</p>
+        <section id="generateSection" class="hero-card card" style="text-align: center; padding: 40px 24px;">
+          <h2 style="font-size: 32px; font-weight: 800; margin-bottom: 8px;">Create a New Extension</h2>
+          <p style="color: var(--muted); font-size: 16px; margin-bottom: 24px;">Describe what your extension should do, and our AI will generate a ready-to-use ZIP.</p>
+          <div style="max-width: 600px; margin: 0 auto;">
+            <textarea id="prompt" rows="3" placeholder="e.g., A Chrome extension that turns all page backgrounds dark..." style="font-size: 16px; padding: 16px; resize: none; border-radius: 16px;"></textarea>
+            <button id="generateBtn" class="btn-primary btn-block" style="margin-top: 16px; padding: 14px; font-size: 16px;">Generate Project</button>
           </div>
-          <textarea id="prompt" rows="4" placeholder="Describe your extension idea..."></textarea>
-          <label class="checkbox premium-choice">
-            <input id="premiumPlanCheckbox" type="checkbox" />
-            <span>Use Plus / Pro Plus features for this generation</span>
-          </label>
-          <button id="generateBtn" class="btn-primary">Generate Project</button>
         </section>
 
         <section class="card">
@@ -73,7 +64,7 @@
             </div>
             <button id="listProjectsBtn" class="btn-secondary">Refresh List</button>
           </div>
-          <div id="projectsList"></div>
+          <div id="projectsList" class="projects-grid"></div>
         </section>
       </main>
     </div>
